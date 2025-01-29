@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://cs258bc2ay848"]
+
+[ext_resource type="PackedScene" uid="uid://iiommkqt756i" path="res://Scenes/damage-area.tscn" id="1_b81qk"]
+[ext_resource type="Texture2D" uid="uid://c4f6pyd2rf8gr" path="res://Sprites/slash_attack.png" id="2_6hv4b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lv1ti"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1a0e"]
+atlas = ExtResource("2_6hv4b")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ynk0b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n1a0e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="SlashAttack" type="Node2D"]
+
+[node name="DamageArea" parent="." instance=ExtResource("1_b81qk")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+scale = Vector2(3.27273, 3.42994)
+shape = SubResource("RectangleShape2D_lv1ti")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ynk0b")

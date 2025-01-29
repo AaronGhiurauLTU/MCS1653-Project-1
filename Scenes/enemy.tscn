@@ -1,0 +1,43 @@
+[gd_scene load_steps=9 format=3 uid="uid://sm1mqucphgo"]
+
+[ext_resource type="PackedScene" uid="uid://iiommkqt756i" path="res://Scenes/damage-area.tscn" id="1_3ukjm"]
+[ext_resource type="Script" path="res://Scenes/Enemy.cs" id="1_j8a37"]
+[ext_resource type="Texture2D" uid="uid://2yrc8f7v3n8p" path="res://Sprites/project-1-enemy.png" id="2_spx71"]
+[ext_resource type="PackedScene" uid="uid://b5m6kit0lgtco" path="res://Scenes/health.tscn" id="4_a0dij"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kdljs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2isox"]
+atlas = ExtResource("2_spx71")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a4870"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2isox")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8um1n"]
+
+[node name="Enemy" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_j8a37")
+
+[node name="DamageArea" parent="." instance=ExtResource("1_3ukjm")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+shape = SubResource("CircleShape2D_kdljs")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_a4870")
+
+[node name="Health" parent="." instance=ExtResource("4_a0dij")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("RectangleShape2D_8um1n")
