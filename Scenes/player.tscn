@@ -1,14 +1,14 @@
 [gd_scene load_steps=8 format=3 uid="uid://bxf36fgxoxjr5"]
 
 [ext_resource type="Script" path="res://_Scripts/Player.cs" id="1_0i2k3"]
-[ext_resource type="Texture2D" uid="uid://c6vx0calp0fux" path="res://Sprites/project-1-player.png" id="1_hprmy"]
+[ext_resource type="Texture2D" uid="uid://dark2cldqjvic" path="res://Sprites/project-1-player.png" id="1_hprmy"]
 [ext_resource type="PackedScene" uid="uid://b5m6kit0lgtco" path="res://Scenes/health.tscn" id="2_vtmpm"]
 [ext_resource type="PackedScene" uid="uid://cj6qs87waiaka" path="res://Scenes/player-HUD.tscn" id="4_fxq33"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o617s"]
-radius = 16.0
+radius = 15.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gmbmo"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vnat"]
 atlas = ExtResource("1_hprmy")
 region = Rect2(0, 0, 32, 32)
 
@@ -16,7 +16,7 @@ region = Rect2(0, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gmbmo")
+"texture": SubResource("AtlasTexture_8vnat")
 }],
 "loop": true,
 "name": &"default",
@@ -24,8 +24,10 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D"]
+z_index = 2
 collision_layer = 2
 script = ExtResource("1_0i2k3")
+attackOffset = 50.0
 
 [node name="Health" parent="." instance=ExtResource("2_vtmpm")]
 
@@ -35,4 +37,13 @@ shape = SubResource("CircleShape2D_o617s")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0phxu")
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(73, 19)
+limit_bottom = 800
+
 [node name="Player-HUD" parent="." instance=ExtResource("4_fxq33")]
+
+[node name="AttackCooldownTimer" type="Timer" parent="."]
+wait_time = 0.6
+
+[connection signal="timeout" from="AttackCooldownTimer" to="." method="OnAttackCooldownTimeout"]

@@ -1,13 +1,13 @@
 [gd_scene load_steps=9 format=3 uid="uid://sm1mqucphgo"]
 
 [ext_resource type="PackedScene" uid="uid://iiommkqt756i" path="res://Scenes/damage-area.tscn" id="1_3ukjm"]
-[ext_resource type="Script" path="res://Scenes/Enemy.cs" id="1_j8a37"]
-[ext_resource type="Texture2D" uid="uid://2yrc8f7v3n8p" path="res://Sprites/project-1-enemy.png" id="2_spx71"]
+[ext_resource type="Script" path="res://_Scripts/Enemy.cs" id="1_pb8ns"]
+[ext_resource type="Texture2D" uid="uid://brp5jaeel6gy7" path="res://Sprites/project-1-enemy.png" id="2_spx71"]
 [ext_resource type="PackedScene" uid="uid://b5m6kit0lgtco" path="res://Scenes/health.tscn" id="4_a0dij"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kdljs"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2isox"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_es8ig"]
 atlas = ExtResource("2_spx71")
 region = Rect2(0, 0, 32, 32)
 
@@ -15,7 +15,7 @@ region = Rect2(0, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2isox")
+"texture": SubResource("AtlasTexture_es8ig")
 }],
 "loop": true,
 "name": &"default",
@@ -25,8 +25,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8um1n"]
 
 [node name="Enemy" type="CharacterBody2D"]
+z_index = 1
 collision_layer = 2
-script = ExtResource("1_j8a37")
+script = ExtResource("1_pb8ns")
+speed = 100.0
 
 [node name="DamageArea" parent="." instance=ExtResource("1_3ukjm")]
 
@@ -41,3 +43,9 @@ sprite_frames = SubResource("SpriteFrames_a4870")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(1.5, 1.5)
 shape = SubResource("RectangleShape2D_8um1n")
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+target_position = Vector2(18, 0)
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+target_position = Vector2(-18, 0)

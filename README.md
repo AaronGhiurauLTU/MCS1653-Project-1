@@ -10,14 +10,14 @@
 ---
 
 # Required ReadMe Info for ALL MCS1653 Projects
-* **Project**   - 
-* **Your Name** - 
+* **Project**   - Project 1 Sidescroller
+* **Your Name** - Aaron Ghiurau
 * **Date**      - 
 
 <br>
 
 1. **What are the controls to your game? How do we play?**
-
+Arrow keys to move and aim attack. z to jump, x to attack
 
 
 <br>
@@ -47,7 +47,7 @@
 <br>
 
 6. **Did you get help from any online websites, videos, or tutorials?** <br> (link them here)
-
+Brackey's Godot 2D Tutorial: https://youtu.be/LOhfqjmasi0?si=W5CWW-TJ50JmI36B
 
 
 <br>
