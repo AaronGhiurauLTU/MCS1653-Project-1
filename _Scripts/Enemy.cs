@@ -33,6 +33,9 @@ public partial class Enemy : CharacterBody2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
+		if (Engine.TimeScale == 0)
+			return;
+			
 		if (rayCastRight.IsColliding())
 		{
 			directionXFacing = -1;

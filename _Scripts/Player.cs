@@ -44,6 +44,9 @@ public partial class Player : CharacterBody2D
 
 	public override void _PhysicsProcess(double delta)
 	{
+		if (Engine.TimeScale == 0)
+			return;
+			
 		Vector2 velocity = Velocity;
 
 		// Add the gravity.

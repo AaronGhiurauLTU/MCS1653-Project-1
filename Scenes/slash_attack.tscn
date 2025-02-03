@@ -46,6 +46,7 @@ _data = {
 [node name="SlashAttack" type="Node2D"]
 
 [node name="DamageArea" parent="." instance=ExtResource("1_b81qk")]
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
 scale = Vector2(3.27273, 3.42994)

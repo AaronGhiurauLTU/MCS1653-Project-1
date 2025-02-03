@@ -1,18 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://bxx1pofrvhttx"]
+[gd_scene load_steps=3 format=3 uid="uid://dpmi8p7h1drrv"]
 
-[ext_resource type="Script" path="res://_Scripts/MainMenu.cs" id="1_4k4ce"]
+[ext_resource type="Script" path="res://_Scripts/MainMenu.cs" id="1_k4idp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_prn5a"]
 font_size = 37
 
-[node name="Main Menu" type="Control"]
+[node name="EndScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_4k4ce")
+script = ExtResource("1_k4idp")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -33,17 +33,12 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Project 1 Sidescroller (Come up with new title!!)"
+text = "You won!"
 label_settings = SubResource("LabelSettings_prn5a")
 
-[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="MainMenu" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Play"
-
-[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Quit
+text = "Main Menu
 "
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="OnPlayPressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="OnQuitPressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MainMenu" to="." method="OnMainMenuPressed"]

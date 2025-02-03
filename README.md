@@ -48,6 +48,7 @@ Arrow keys to move and aim attack. z to jump, x to attack
 
 6. **Did you get help from any online websites, videos, or tutorials?** <br> (link them here)
 Brackey's Godot 2D Tutorial: https://youtu.be/LOhfqjmasi0?si=W5CWW-TJ50JmI36B
+Menu Tutorial: https://youtu.be/vsKxB66_ngw?si=3cbEceOTDbdFnJhn
 
 
 <br>

@@ -26,7 +26,7 @@ animations = [{
 
 [node name="Enemy" type="CharacterBody2D"]
 z_index = 1
-collision_layer = 2
+collision_layer = 4
 script = ExtResource("1_pb8ns")
 speed = 100.0
 

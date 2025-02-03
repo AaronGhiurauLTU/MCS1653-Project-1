@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://cj6qs87waiaka"]
+[gd_scene load_steps=4 format=3 uid="uid://cj6qs87waiaka"]
 
 [ext_resource type="Script" path="res://_Scripts/PlayerHud.cs" id="1_r4hh7"]
+[ext_resource type="PackedScene" uid="uid://craq4exq8gdbc" path="res://Scenes/PauseMenu.tscn" id="2_fbbfx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_18pw5"]
+font_size = 40
 
 [node name="Player-HUD" type="CanvasLayer"]
 script = ExtResource("1_r4hh7")
@@ -11,3 +15,6 @@ offset_top = 3.0
 offset_right = 51.0
 offset_bottom = 26.0
 text = "5"
+label_settings = SubResource("LabelSettings_18pw5")
+
+[node name="PauseMenu" parent="." instance=ExtResource("2_fbbfx")]
