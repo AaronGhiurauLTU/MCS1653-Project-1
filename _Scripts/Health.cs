@@ -13,7 +13,7 @@ public partial class Health : Node
 	public void TakeDamage(int damage)
 	{
 		currentHealth -= damage;
-		GD.Print(GetParent().Name + ": ow!");
+
 		// keep health from reaching 0
 		currentHealth = Math.Max(0, currentHealth);
 

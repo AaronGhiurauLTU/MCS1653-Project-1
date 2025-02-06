@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ddxuqh3aggmeh" path="res://Sprites/Character_Attack_fx.png" id="2_o6pon"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lv1ti"]
+size = Vector2(12.9555, 10.2043)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e8n82"]
 atlas = ExtResource("2_o6pon")
@@ -72,11 +73,13 @@ _data = {
 }
 
 [node name="SlashAttack" type="Node2D"]
+scale = Vector2(1.25, 1.25)
 
 [node name="DamageArea" parent="." instance=ExtResource("1_b81qk")]
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+position = Vector2(9.2, 2.5)
 scale = Vector2(3.27273, 3.42994)
 shape = SubResource("RectangleShape2D_lv1ti")
 

@@ -11,7 +11,6 @@ public partial class DamageArea : Area2D
 
 	private void OnAreaEntered(Area2D area)
 	{
-		GD.Print(area.GetParent().Name);
 		DamageTarget(area);
 	}
 

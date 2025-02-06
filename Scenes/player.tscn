@@ -96,7 +96,7 @@ animations = [{
 z_index = 2
 collision_layer = 2
 script = ExtResource("1_0i2k3")
-attackOffset = 0.0
+attackOffset = 20.0
 
 [node name="Health" parent="." instance=ExtResource("2_vtmpm")]
 
