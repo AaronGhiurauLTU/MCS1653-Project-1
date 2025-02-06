@@ -29,7 +29,8 @@ Arrow keys to move and aim attack. z to jump, x to attack
 <br>
 
 3. **Any assets used that you didn't create yourself?** <br> (art, music, etc. Just tell us where you got it, link it here)
-
+Character sprite and animations: https://admurin.itch.io/free-monster-pack-character
+Tileset: https://opengameart.org/content/generic-platformer-tileset-16x16-background
 
 
 <br>

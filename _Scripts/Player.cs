@@ -87,7 +87,7 @@ public partial class Player : CharacterBody2D
 		{
 			canAttack = false;
 			attackCooldownTimer.Start();
-
+			animatedSprite.Play("attack");
 			var scene = GD.Load<PackedScene>("res://Scenes/slash_attack.tscn");
 			Vector2 attackDirection = direction;
 			

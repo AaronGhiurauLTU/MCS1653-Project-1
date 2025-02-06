@@ -45,7 +45,9 @@ scale = Vector2(1.5, 1.5)
 shape = SubResource("RectangleShape2D_8um1n")
 
 [node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(0, 11)
 target_position = Vector2(18, 0)
 
 [node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(0, 11)
 target_position = Vector2(-18, 0)
