@@ -14,7 +14,7 @@ public partial class Health : Node
 	{
 		currentHealth -= damage;
 
-		// keep health from reaching 0
+		// keep health from going below 0
 		currentHealth = Math.Max(0, currentHealth);
 
 		EmitSignal(SignalName.HealthChanged, currentHealth);
