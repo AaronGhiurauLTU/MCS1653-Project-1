@@ -6,4 +6,9 @@
 collision_mask = 2
 script = ExtResource("1_0mj6y")
 
+[node name="InvincibilityTimer" type="Timer" parent="."]
+wait_time = 0.75
+
 [connection signal="body_entered" from="." to="." method="OnBodyEntered"]
+[connection signal="body_exited" from="." to="." method="OnBodyExited"]
+[connection signal="timeout" from="InvincibilityTimer" to="." method="OnInvincibilityTimedOut"]
