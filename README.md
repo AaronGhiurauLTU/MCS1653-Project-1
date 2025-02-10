@@ -32,6 +32,7 @@ Arrow keys to move and aim attack. z to jump, x to attack
 Character sprite and animations: https://admurin.itch.io/free-monster-pack-character
 Tileset and backgrounds: https://opengameart.org/content/generic-platformer-tileset-16x16-background
 Heart Sprite by NicoleMarieProductions: https://opengameart.org/content/heart-1616
+Zombie Sprite by CharlesGabriel: https://opengameart.org/content/16x18-zombie-characters-templates-extra-template
 
 
 <br>
@@ -51,6 +52,7 @@ Heart Sprite by NicoleMarieProductions: https://opengameart.org/content/heart-16
 6. **Did you get help from any online websites, videos, or tutorials?** <br> (link them here)
 Brackey's Godot 2D Tutorial: https://youtu.be/LOhfqjmasi0?si=W5CWW-TJ50JmI36B
 Menu Tutorial: https://youtu.be/vsKxB66_ngw?si=3cbEceOTDbdFnJhn
+Scrolling background/parallax tutorial: https://www.youtube.com/watch?v=quVFPh1eotE
 
 
 <br>

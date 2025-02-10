@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2anbfujklguk"
-path="res://.godot/imported/2015-02-26 [DB32](Generic Platformer)(Clouds).png-105206feb7306434ff45aceeba9a9609.ctex"
+uid="uid://0v5kwgrui3wd"
+path="res://.godot/imported/Character_Idle_customized.png-b5d8c6f0fdb46c7804c869bc8f7aefff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Tiles/2015-02-26 [DB32](Generic Platformer)(Clouds).png"
-dest_files=["res://.godot/imported/2015-02-26 [DB32](Generic Platformer)(Clouds).png-105206feb7306434ff45aceeba9a9609.ctex"]
+source_file="res://Tiles/Character_Idle_customized.png"
+dest_files=["res://.godot/imported/Character_Idle_customized.png-b5d8c6f0fdb46c7804c869bc8f7aefff.ctex"]
 
 [params]
 

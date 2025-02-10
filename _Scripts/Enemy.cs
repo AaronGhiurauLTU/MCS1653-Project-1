@@ -35,16 +35,17 @@ public partial class Enemy : CharacterBody2D
 	{
 		if (Engine.TimeScale == 0)
 			return;
-			
+		
+		// flip is inverted to account for the sprite being faced in the opposite direction
 		if (rayCastRight.IsColliding())
 		{
 			directionXFacing = -1;
-			animatedSprite.FlipH = true;
+			animatedSprite.FlipH = false;
 		}
 		else if (rayCastLeft.IsColliding())
 		{
 			directionXFacing = 1;
-			animatedSprite.FlipH = false;
+			animatedSprite.FlipH = true;
 		}
 
 		Velocity = Vector2.Right * directionXFacing * speed;

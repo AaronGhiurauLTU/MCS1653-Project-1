@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://cs258bc2ay848"]
 
 [ext_resource type="PackedScene" uid="uid://iiommkqt756i" path="res://Scenes/damage-area.tscn" id="1_b81qk"]
-[ext_resource type="Texture2D" uid="uid://ddxuqh3aggmeh" path="res://Sprites/Character_Attack_fx.png" id="2_o6pon"]
+[ext_resource type="Texture2D" uid="uid://ddxuqh3aggmeh" path="res://Tiles/Character_Attack_fx.png" id="2_o6pon"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lv1ti"]
 size = Vector2(12.9555, 10.2043)

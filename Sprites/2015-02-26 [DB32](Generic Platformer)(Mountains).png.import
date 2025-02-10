@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddxuqh3aggmeh"
-path="res://.godot/imported/Character_Attack_fx.png-e75985557beb1d873e946f9b1eec3e29.ctex"
+uid="uid://dkv68up4t7auu"
+path="res://.godot/imported/2015-02-26 [DB32](Generic Platformer)(Mountains).png-994763aab8c375584c984e152cd969bd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Character_Attack_fx.png"
-dest_files=["res://.godot/imported/Character_Attack_fx.png-e75985557beb1d873e946f9b1eec3e29.ctex"]
+source_file="res://Sprites/2015-02-26 [DB32](Generic Platformer)(Mountains).png"
+dest_files=["res://.godot/imported/2015-02-26 [DB32](Generic Platformer)(Mountains).png-994763aab8c375584c984e152cd969bd.ctex"]
 
 [params]
 

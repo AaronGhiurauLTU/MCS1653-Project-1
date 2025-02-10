@@ -1,12 +1,12 @@
 [gd_scene load_steps=11 format=4 uid="uid://c6mdlwehpoi1h"]
 
 [ext_resource type="PackedScene" uid="uid://bxf36fgxoxjr5" path="res://Scenes/player.tscn" id="1_sddgt"]
-[ext_resource type="Texture2D" uid="uid://byh34u7f28ujb" path="res://Tiles/2015-02-26 [DB32](Generic Platformer)(Tileset).png" id="2_fub1b"]
+[ext_resource type="Texture2D" uid="uid://byh34u7f28ujb" path="res://Sprites/2015-02-26 [DB32](Generic Platformer)(Tileset).png" id="2_fub1b"]
 [ext_resource type="PackedScene" uid="uid://sm1mqucphgo" path="res://Scenes/enemy.tscn" id="3_3ocjt"]
 [ext_resource type="PackedScene" uid="uid://iiommkqt756i" path="res://Scenes/damage-area.tscn" id="4_6msgm"]
 [ext_resource type="PackedScene" uid="uid://bjr8if8hmk00c" path="res://Scenes/EndZone.tscn" id="5_d6rmt"]
-[ext_resource type="Texture2D" uid="uid://dkv68up4t7auu" path="res://Tiles/2015-02-26 [DB32](Generic Platformer)(Mountains).png" id="6_2mihe"]
-[ext_resource type="Texture2D" uid="uid://b2anbfujklguk" path="res://Tiles/2015-02-26 [DB32](Generic Platformer)(Clouds).png" id="7_2do8e"]
+[ext_resource type="Texture2D" uid="uid://dkv68up4t7auu" path="res://Sprites/2015-02-26 [DB32](Generic Platformer)(Mountains).png" id="6_2mihe"]
+[ext_resource type="Texture2D" uid="uid://b2anbfujklguk" path="res://Sprites/2015-02-26 [DB32](Generic Platformer)(Clouds).png" id="7_2do8e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l2n11"]
 texture = ExtResource("2_fub1b")

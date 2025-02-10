@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkv68up4t7auu"
-path="res://.godot/imported/2015-02-26 [DB32](Generic Platformer)(Mountains).png-8a0320acec7281468e7a627dc8d223e6.ctex"
+uid="uid://cgo41afemwn81"
+path="res://.godot/imported/OGA_16x18 zombie charas complete.png-12bda9d727e895782017d60dc4fc48c4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Tiles/2015-02-26 [DB32](Generic Platformer)(Mountains).png"
-dest_files=["res://.godot/imported/2015-02-26 [DB32](Generic Platformer)(Mountains).png-8a0320acec7281468e7a627dc8d223e6.ctex"]
+source_file="res://Tiles/OGA_16x18 zombie charas complete.png"
+dest_files=["res://.godot/imported/OGA_16x18 zombie charas complete.png-12bda9d727e895782017d60dc4fc48c4.ctex"]
 
 [params]
 
