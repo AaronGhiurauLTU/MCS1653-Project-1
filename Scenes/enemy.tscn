@@ -39,6 +39,7 @@ shape = SubResource("CircleShape2D_kdljs")
 sprite_frames = SubResource("SpriteFrames_a4870")
 
 [node name="Health" parent="." instance=ExtResource("4_a0dij")]
+maxHealth = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(1.5, 1.5)
