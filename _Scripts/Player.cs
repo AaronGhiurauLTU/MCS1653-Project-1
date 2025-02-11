@@ -12,6 +12,9 @@ public partial class Player : CharacterBody2D
 	private PlayerHud playerHud;
 	private AnimatedSprite2D animatedSprite;
 	private Timer attackCooldownTimer;
+	private Node2D slashAttack;
+	private AnimationPlayer animationPlayer;
+	private bool isAttacking = false;
 	public override void _Ready()
 	{
 		health = GetNode<Health>("Health");
@@ -24,6 +27,9 @@ public partial class Player : CharacterBody2D
 
 		animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 		attackCooldownTimer = GetNode<Timer>("AttackCooldownTimer");
+		slashAttack = GetNode<Node2D>("SlashAttack");
+		animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+		slashAttack.Visible = false;
 	}
 
 	private void OnHealthChanged(int newHealth)
@@ -32,6 +38,17 @@ public partial class Player : CharacterBody2D
 	}
 
 	private void OnHealthDepleted()
+	{
+		Velocity = Vector2.Zero;
+
+		// play the character death animation
+		animatedSprite.Play("death");
+
+		// this is to reload the scene and perform any other effects after death
+		animationPlayer.Play("death");
+	}
+	
+	public void ReloadScene()
 	{
 		// reload the level, call deferred used to reload scene after physics frame to avoid errors
 		GetTree().CallDeferred(SceneTree.MethodName.ReloadCurrentScene);
@@ -42,9 +59,17 @@ public partial class Player : CharacterBody2D
 		canAttack = true;
 	}
 
+	private void OnAttackAnimationFinished(StringName animationName)
+	{
+		if (animationName == "player_attack")
+		{
+			isAttacking = false;
+		}
+	}
+
 	public override void _PhysicsProcess(double delta)
 	{
-		if (Engine.TimeScale == 0)
+		if (Engine.TimeScale == 0 || health.CurrentHealth <= 0)
 			return;
 			
 		Vector2 velocity = Velocity;
@@ -83,14 +108,19 @@ public partial class Player : CharacterBody2D
 			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
 		}
 
-		if (Input.IsActionJustPressed("attack") && canAttack)
+		if (Input.IsActionJustPressed("attack") && canAttack && !isAttacking)
 		{
+			isAttacking = true;
 			canAttack = false;
 			attackCooldownTimer.Start();
 			animatedSprite.Play("attack");
-			var scene = GD.Load<PackedScene>("res://Scenes/slash_attack.tscn");
+
+			slashAttack.Visible = true;
+			slashAttack.SetProcess(true);
+
 			Vector2 attackDirection = direction;
 			
+
 			if (attackDirection.Length() == 0)
 			{
 				attackDirection = directionXFacing * Vector2.Right;
@@ -99,19 +129,36 @@ public partial class Player : CharacterBody2D
 			// angle that the attack is rotated by, so that the attack goes in the direction the player is facing
 			float angleDeg = (float)Mathf.RadToDeg(attackDirection.Angle());
 
-			var newAttack = scene.Instantiate() as Node2D;
-			AddChild(newAttack);
-			newAttack.RotationDegrees = angleDeg;
+			slashAttack.RotationDegrees = angleDeg;
 
-			newAttack.Position += attackDirection * attackOffset;
+			slashAttack.Position = attackDirection * attackOffset;
 
-			AnimationPlayer attackAnimationPlayer = newAttack.GetNode<AnimationPlayer>("AnimationPlayer");
-			attackAnimationPlayer.Play("attack");
+			AnimationPlayer attackAnimationPlayer = slashAttack.GetNode<AnimationPlayer>("AnimationPlayer");
+			attackAnimationPlayer.Play("player_attack");
 		}
 
 		Velocity = velocity;
 		MoveAndSlide();
 
-		
+		// update animations
+		if (!isAttacking)
+		{
+			if (IsOnFloor())
+			{
+				if (velocity.X == 0)
+				{
+					animatedSprite.Play("idle");
+				}
+				else
+				{
+					animatedSprite.Play("walk");
+				}
+			}
+			else
+			{
+				animatedSprite.Play("jump");
+			}
+		}
+
 	}
 }

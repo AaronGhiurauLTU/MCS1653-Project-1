@@ -6,6 +6,9 @@ public partial class Health : Node
 	[Export] private int maxHealth = 5;
 	private int currentHealth;
 
+	// get the current health without allowing the setting of it publicly
+	public int CurrentHealth { get { return currentHealth; } }
+
 	// custom signal to fire when health reaches 0
 	[Signal] public delegate void HealthDepletedEventHandler();
 
