@@ -1,0 +1,61 @@
+[gd_scene load_steps=10 format=3 uid="uid://bxsxu8lpwyt0y"]
+
+[ext_resource type="Texture2D" uid="uid://brp5jaeel6gy7" path="res://Sprites/project-1-enemy.png" id="1_ivyuh"]
+[ext_resource type="Script" path="res://_Scripts/FlyingEnemy.cs" id="1_w8c7q"]
+[ext_resource type="PackedScene" uid="uid://iiommkqt756i" path="res://Scenes/damage-area.tscn" id="2_3gpy7"]
+[ext_resource type="PackedScene" uid="uid://b5m6kit0lgtco" path="res://Scenes/health.tscn" id="4_bko0s"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ox1fn"]
+radius = 16.0312
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b5ieu"]
+radius = 15.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utcw1"]
+atlas = ExtResource("1_ivyuh")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qyh7j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utcw1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3yx1o"]
+radius = 207.17
+
+[node name="FlyingEnemy" type="CharacterBody2D"]
+collision_layer = 4
+script = ExtResource("1_w8c7q")
+dashMoveSpeed = 250.0
+wanderMoveSpeed = 75.0
+flyingUpMoveSpeed = 70.0
+maxWanderDistance = 120.0
+
+[node name="DamageArea" parent="." instance=ExtResource("2_3gpy7")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea"]
+shape = SubResource("CircleShape2D_ox1fn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_b5ieu")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qyh7j")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_3yx1o")
+
+[node name="Health" parent="." instance=ExtResource("4_bko0s")]
+maxHealth = 2
+
+[connection signal="body_entered" from="DetectionArea" to="." method="OnBodyEnteredDetectionArea"]
+[connection signal="body_exited" from="DetectionArea" to="." method="OnBodyExitedDetectionArea"]

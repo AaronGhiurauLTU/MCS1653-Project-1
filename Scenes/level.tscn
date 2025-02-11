@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://c6mdlwehpoi1h"]
+[gd_scene load_steps=12 format=4 uid="uid://c6mdlwehpoi1h"]
 
 [ext_resource type="PackedScene" uid="uid://bxf36fgxoxjr5" path="res://Scenes/player.tscn" id="1_sddgt"]
 [ext_resource type="Texture2D" uid="uid://dpbjy44vcexu5" path="res://Sprites/2015-02-26 [DB32](Generic Platformer)(Tileset).png" id="2_fub1b"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bjr8if8hmk00c" path="res://Scenes/EndZone.tscn" id="5_d6rmt"]
 [ext_resource type="Texture2D" uid="uid://dkv68up4t7auu" path="res://Sprites/2015-02-26 [DB32](Generic Platformer)(Mountains).png" id="6_2mihe"]
 [ext_resource type="Texture2D" uid="uid://b2anbfujklguk" path="res://Sprites/2015-02-26 [DB32](Generic Platformer)(Clouds).png" id="7_2do8e"]
+[ext_resource type="PackedScene" uid="uid://bxsxu8lpwyt0y" path="res://Scenes/FlyingEnemy.tscn" id="8_3u1bi"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l2n11"]
 texture = ExtResource("2_fub1b")
@@ -128,6 +129,7 @@ tile_map_data = PackedByteArray("AAAHABgAAAAHAAAAAAAIABgAAAABAAAAAAAJABgAAAAHAAE
 tile_set = SubResource("TileSet_dr7or")
 
 [node name="Player" parent="." instance=ExtResource("1_sddgt")]
+unique_name_in_owner = true
 position = Vector2(144, 336)
 
 [node name="OOBKillZone" parent="." instance=ExtResource("4_6msgm")]
@@ -175,3 +177,6 @@ position = Vector2(656, 368)
 
 [node name="Zombie2" parent="Enemies" instance=ExtResource("3_3ocjt")]
 position = Vector2(816, 368)
+
+[node name="FlyingEnemy" parent="." instance=ExtResource("8_3u1bi")]
+position = Vector2(496, 240)

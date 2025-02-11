@@ -33,8 +33,15 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Project 1 Sidescroller (Come up with new title!!)"
+text = "Slidy Slasher
+"
 label_settings = SubResource("LabelSettings_prn5a")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "By Aaron Ghiurau"
+horizontal_alignment = 1
 
 [node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2

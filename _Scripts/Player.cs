@@ -73,7 +73,7 @@ public partial class Player : CharacterBody2D
 			return;
 			
 		Vector2 velocity = Velocity;
-		GD.Print(IsOnFloor());
+
 		// Add the gravity.
 		if (!IsOnFloor())
 		{
