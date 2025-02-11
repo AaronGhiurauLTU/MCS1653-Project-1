@@ -89,8 +89,8 @@ _data = {
 "player_attack": SubResource("Animation_cw8pb")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_o617s"]
-radius = 15.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5rghs"]
+radius = 6.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lqixg"]
 atlas = ExtResource("3_v074n")
@@ -378,8 +378,7 @@ speed_scale = 0.5
 [node name="Health" parent="." instance=ExtResource("2_vtmpm")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(0.5, 1)
-shape = SubResource("CircleShape2D_o617s")
+shape = SubResource("CapsuleShape2D_5rghs")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0phxu")

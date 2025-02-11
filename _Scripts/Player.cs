@@ -73,7 +73,7 @@ public partial class Player : CharacterBody2D
 			return;
 			
 		Vector2 velocity = Velocity;
-
+		GD.Print(IsOnFloor());
 		// Add the gravity.
 		if (!IsOnFloor())
 		{
@@ -89,9 +89,10 @@ public partial class Player : CharacterBody2D
 		// Get the input direction and handle the movement/deceleration.
 		// As good practice, you should replace UI actions with custom gameplay actions.
 		Vector2 direction = Input.GetVector("left", "right", "up", "down");
-		if (direction != Vector2.Zero)
+		float horizontal = Input.GetAxis("left", "right");
+		if (horizontal != 0)
 		{
-			velocity.X = direction.X * Speed;
+			velocity.X = horizontal * Speed;
 			if (velocity.X > 0)
 			{
 				directionXFacing = 1;
@@ -119,7 +120,6 @@ public partial class Player : CharacterBody2D
 			slashAttack.SetProcess(true);
 
 			Vector2 attackDirection = direction;
-			
 
 			if (attackDirection.Length() == 0)
 			{
