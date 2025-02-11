@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://b5m6kit0lgtco" path="res://Scenes/health.tscn" id="2_vtmpm"]
 [ext_resource type="Texture2D" uid="uid://ddxuqh3aggmeh" path="res://Tiles/Character_Attack_fx.png" id="3_1goxb"]
 [ext_resource type="Texture2D" uid="uid://0v5kwgrui3wd" path="res://Tiles/Character_Idle_customized.png" id="3_g15op"]
-[ext_resource type="Texture2D" uid="uid://dhvrfpd3i3o3f" path="res://Tiles/Character_Attack_custom.png" id="3_v074n"]
+[ext_resource type="Texture2D" uid="uid://dhvrfpd3i3o3f" path="res://Sprites/Character_Attack_custom.png" id="3_v074n"]
 [ext_resource type="PackedScene" uid="uid://cj6qs87waiaka" path="res://Scenes/player-HUD.tscn" id="4_fxq33"]
 [ext_resource type="Texture2D" uid="uid://dd1w2sdf8li34" path="res://Tiles/Character_Death.png" id="6_lbkdt"]
 [ext_resource type="Texture2D" uid="uid://btvauxyaf6t3x" path="res://Tiles/Character_Move_custom.png" id="7_3yqks"]
@@ -316,6 +316,9 @@ animations = [{
 "speed": 7.0
 }]
 
+[sub_resource type="Animation" id="Animation_rvfrg"]
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_xcj43"]
 resource_name = "death"
 length = 2.0
@@ -333,9 +336,6 @@ tracks/0/keys = {
 "method": &"ReloadScene"
 }]
 }
-
-[sub_resource type="Animation" id="Animation_rvfrg"]
-length = 0.001
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ckwyj"]
 _data = {
@@ -383,10 +383,8 @@ shape = SubResource("CircleShape2D_o617s")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0phxu")
-animation = &"death"
+animation = &"idle"
 autoplay = "idle"
-frame = 10
-frame_progress = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(73, 19)

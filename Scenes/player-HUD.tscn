@@ -8,6 +8,7 @@
 script = ExtResource("1_r4hh7")
 
 [node name="PauseMenu" parent="." instance=ExtResource("2_fbbfx")]
+visible = false
 
 [node name="Hearts" type="Sprite2D" parent="."]
 texture_repeat = 2
