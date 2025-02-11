@@ -130,7 +130,7 @@ tile_set = SubResource("TileSet_dr7or")
 
 [node name="Player" parent="." instance=ExtResource("1_sddgt")]
 unique_name_in_owner = true
-position = Vector2(144, 336)
+position = Vector2(144, 368)
 
 [node name="OOBKillZone" parent="." instance=ExtResource("4_6msgm")]
 position = Vector2(1520, 560)

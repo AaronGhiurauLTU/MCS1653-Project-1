@@ -6,6 +6,7 @@ public partial class Player : CharacterBody2D
 	[Export] public float Speed = 300.0f;
 	[Export] public float JumpVelocity = -400.0f;
 	[Export] public float attackOffset = 1f;
+	[Export] public float maxSlideDistance = 100f;
 	private bool canAttack = true;
 	private int directionXFacing = 1;
 	private Health health;
@@ -14,7 +15,11 @@ public partial class Player : CharacterBody2D
 	private Timer attackCooldownTimer;
 	private Node2D slashAttack;
 	private AnimationPlayer animationPlayer;
-	private bool isAttacking = false;
+	private bool isAttacking = false,
+		isSliding = false;
+	
+	private Vector2 originalSlidePosition;
+
 	public override void _Ready()
 	{
 		health = GetNode<Health>("Health");
@@ -79,34 +84,62 @@ public partial class Player : CharacterBody2D
 		{
 			velocity += GetGravity() * (float)delta;
 		}
+		
+		float horizontalInputs = Input.GetAxis("left", "right");
 
 		// Handle Jump.
 		if (Input.IsActionJustPressed("jump") && IsOnFloor())
 		{
 			velocity.Y = JumpVelocity;
+		} 
+		else if (Input.IsActionJustPressed("slide") && IsOnFloor() && !isSliding && horizontalInputs != 0)
+		{
+			isSliding = true;
+			RotationDegrees = -90 * directionXFacing;
+			Position = new Vector2(Position.X, Position.Y + 10);
+			originalSlidePosition = Position;
 		}
 
 		// Get the input direction and handle the movement/deceleration.
-		// As good practice, you should replace UI actions with custom gameplay actions.
 		Vector2 direction = Input.GetVector("left", "right", "up", "down");
-		float horizontal = Input.GetAxis("left", "right");
-		if (horizontal != 0)
+		
+		if (horizontalInputs != 0 && !isSliding)
 		{
-			velocity.X = horizontal * Speed;
-			if (velocity.X > 0)
+			velocity.X = horizontalInputs * Speed;
+
+			if (horizontalInputs > 0)
 			{
 				directionXFacing = 1;
 				animatedSprite.FlipH = false;
 			}
-			else if (velocity.X < 0)
+			else if (horizontalInputs < 0)
 			{
 				directionXFacing = -1;
 				animatedSprite.FlipH = true;
 			}
 		}
-		else
+		else if (!isSliding)
 		{
+			// decelerate speed to 0
 			velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+		}
+
+
+		if (isSliding)
+		{
+			if (!IsOnFloor() || (Position - originalSlidePosition).Length() > maxSlideDistance || IsOnWall())
+			{
+				isSliding = false;
+				RotationDegrees = 0;
+				Position = new Vector2(Position.X, Position.Y - 6);
+				// decelerate speed to 0
+				velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
+			}
+			else
+			{
+				//animatedSprite.FlipH = true;
+				velocity.X = directionXFacing * Speed * 2;
+			}
 		}
 
 		if (Input.IsActionJustPressed("attack") && canAttack && !isAttacking)
@@ -145,7 +178,11 @@ public partial class Player : CharacterBody2D
 		{
 			if (IsOnFloor())
 			{
-				if (velocity.X == 0)
+				if (isSliding)
+				{
+					animatedSprite.Play("slide");
+				}
+				else if (velocity.X == 0)
 				{
 					animatedSprite.Play("idle");
 				}

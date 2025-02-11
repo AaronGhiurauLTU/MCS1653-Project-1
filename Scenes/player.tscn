@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://bxf36fgxoxjr5"]
+[gd_scene load_steps=53 format=3 uid="uid://bxf36fgxoxjr5"]
 
 [ext_resource type="Script" path="res://_Scripts/Player.cs" id="1_0i2k3"]
 [ext_resource type="PackedScene" uid="uid://iiommkqt756i" path="res://Scenes/damage-area.tscn" id="2_souia"]
@@ -180,6 +180,10 @@ region = Rect2(384, 256, 128, 128)
 atlas = ExtResource("7_3yqks")
 region = Rect2(0, 256, 128, 128)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_yo4sg"]
+atlas = ExtResource("7_3yqks")
+region = Rect2(640, 256, 128, 128)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_ta6eo"]
 atlas = ExtResource("7_3yqks")
 region = Rect2(0, 256, 128, 128)
@@ -294,6 +298,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_yo4sg")
+}],
+"loop": true,
+"name": &"slide",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ta6eo")
 }, {
 "duration": 1.0,
@@ -382,7 +394,7 @@ shape = SubResource("CapsuleShape2D_5rghs")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_0phxu")
-animation = &"idle"
+animation = &"attack"
 autoplay = "idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]
