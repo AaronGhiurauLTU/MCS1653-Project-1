@@ -178,5 +178,8 @@ position = Vector2(656, 368)
 [node name="Zombie2" parent="Enemies" instance=ExtResource("3_3ocjt")]
 position = Vector2(816, 368)
 
-[node name="FlyingEnemy" parent="." instance=ExtResource("8_3u1bi")]
-position = Vector2(496, 240)
+[node name="FlyingEnemy" parent="Enemies" instance=ExtResource("8_3u1bi")]
+position = Vector2(1296, 144)
+
+[node name="FlyingEnemy2" parent="Enemies" instance=ExtResource("8_3u1bi")]
+position = Vector2(784, 240)

@@ -3,26 +3,45 @@ using System;
 
 public partial class FlyingEnemy : CharacterBody2D
 {
+	// the speed while dashing
 	[Export] private float dashMoveSpeed = 200f,
+		
+		// the speed while wandering
 		wanderMoveSpeed = 100f,
+
+		// the speed while flying up
 		flyingUpMoveSpeed = 50f;
+
+	// the max distance this enemy can wander left or right
 	[Export] private float maxWanderDistance = 200f;
+
+	// reference to the player in the scene
 	private Node2D player;
+
+	// the original position to fly back to
 	private Vector2 originalPosition;
-	private Vector2 dashVector;
+
+	// the direction the dash should go in
+	private Vector2 dashDirection;
 	private Health health;
+
+	// the various states the enemy can be in
 	private bool isDashing = false,
 		isWandering = true,
 		isFlyingUp = false,
 		playerDetected = false;
 	
+	// the direction the character is wandering in, either -1 or 1 for left or right respectively
 	private int wanderDirection = 1;
 
 	private AnimatedSprite2D animatedSprite;
+
 	public override void _Ready()
 	{
 		player = GetNode<Node2D>("%Player");
 		animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite");
+
+		// store the original position
 		originalPosition = Position;
 
 		health = GetNode<Health>("Health");
@@ -37,21 +56,23 @@ public partial class FlyingEnemy : CharacterBody2D
 		CallDeferred(Node.MethodName.QueueFree);
 	}
 
+	// target the player and enter the dash state
 	private void TargetPlayer()
 	{
 		Vector2 difference = player.Position - Position;
 
-		if (difference.Y > 0 && !isFlyingUp)
+		// only target the player if it is below this enemy and the enemy was wandering
+		if (difference.Y > 0 && isWandering)
 		{
-			dashVector = difference;
+			dashDirection = difference;
 			isDashing = true;
 			isWandering = false;
-			playerDetected = true;
 		}
 	}
 
 	private void OnBodyEnteredDetectionArea(Node2D body)
 	{
+		playerDetected = true;
 		TargetPlayer();
 	}
 
@@ -70,8 +91,10 @@ public partial class FlyingEnemy : CharacterBody2D
 
 		if (isDashing)
 		{
-			Velocity = dashVector.Normalized() * dashMoveSpeed;
+			animatedSprite.Play("Dash");
+			Velocity = dashDirection.Normalized() * dashMoveSpeed;
 
+			// stop dashing once the floor is hit
 			if (IsOnFloor())
 			{
 				isDashing = false;
@@ -80,6 +103,9 @@ public partial class FlyingEnemy : CharacterBody2D
 		}
 		else if (isWandering)
 		{
+			animatedSprite.Play("Flying");
+
+			// change the wandering direction once the max wander distance is exceeded
 			if ((originalPosition - Position).Length() > maxWanderDistance)
 			{
 				wanderDirection *= -1;
@@ -89,8 +115,10 @@ public partial class FlyingEnemy : CharacterBody2D
 		}
 		else if (isFlyingUp)
 		{
+			animatedSprite.Play("Flying");
 			Velocity = (originalPosition - Position).Normalized() * flyingUpMoveSpeed;
 
+			// stop flying up once the enemy is close enough to the original position
 			if ((originalPosition - Position).Length() <= 1)
 			{
 				isFlyingUp = false;
@@ -100,6 +128,7 @@ public partial class FlyingEnemy : CharacterBody2D
 
 		MoveAndSlide();
 
+		// flip the sprite depending on its velocity so it faces the correct way
 		if (Velocity.X > 0)
 		{
 			animatedSprite.FlipH = false;

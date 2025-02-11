@@ -33,6 +33,7 @@ Character sprite and animations: https://admurin.itch.io/free-monster-pack-chara
 Tileset and backgrounds: https://opengameart.org/content/generic-platformer-tileset-16x16-background
 Heart Sprite by NicoleMarieProductions: https://opengameart.org/content/heart-1616
 Zombie Sprite by CharlesGabriel: https://opengameart.org/content/16x18-zombie-characters-templates-extra-template
+Bat Sprites: https://opengameart.org/content/bat-rework
 
 
 <br>
