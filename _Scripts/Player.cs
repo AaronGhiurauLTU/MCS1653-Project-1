@@ -40,11 +40,19 @@ public partial class Player : CharacterBody2D
 	private void OnHealthChanged(int newHealth)
 	{
 		playerHud.UpdateHealthUI(newHealth);
+
+		if (newHealth > 0)
+		{
+			animationPlayer.Play("damaged");
+		}
 	}
 
 	private void OnHealthDepleted()
 	{
 		Velocity = Vector2.Zero;
+
+		// fix rotation if player died while sliding
+		StopSlide();
 
 		// play the character death animation
 		animatedSprite.Play("death");
@@ -69,6 +77,16 @@ public partial class Player : CharacterBody2D
 		if (animationName == "player_attack")
 		{
 			isAttacking = false;
+		}
+	}
+
+	private void StopSlide()
+	{
+		if (isSliding)
+		{
+			isSliding = false;
+			RotationDegrees = 0;
+			Position = new Vector2(Position.X, Position.Y - 6);
 		}
 	}
 
@@ -129,9 +147,8 @@ public partial class Player : CharacterBody2D
 		{
 			if (!IsOnFloor() || (Position - originalSlidePosition).Length() > maxSlideDistance || IsOnWall())
 			{
-				isSliding = false;
-				RotationDegrees = 0;
-				Position = new Vector2(Position.X, Position.Y - 6);
+				StopSlide();
+
 				// decelerate speed to 0
 				velocity.X = Mathf.MoveToward(Velocity.X, 0, Speed);
 			}

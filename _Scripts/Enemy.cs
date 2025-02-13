@@ -9,7 +9,7 @@ public partial class Enemy : CharacterBody2D
 
 	private RayCast2D rayCastRight, rayCastLeft;
 	private AnimatedSprite2D animatedSprite;
-
+	private AnimationPlayer animationPlayer;
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
@@ -17,11 +17,22 @@ public partial class Enemy : CharacterBody2D
 
 		// connect health's custom HealthDepleted signal to OnHealthDepleted
 		health.HealthDepleted += OnHealthDepleted;
+		health.HealthChanged += OnHealthChanged;
 
 		rayCastRight = GetNode<RayCast2D>("RayCastRight");
 		rayCastLeft = GetNode<RayCast2D>("RayCastLeft");
 
 		animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+
+		animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+	}
+
+	private void OnHealthChanged(int newHealth)
+	{
+		if (newHealth > 0)
+		{
+			animationPlayer.Play("damaged");
+		}
 	}
 
 	private void OnHealthDepleted()

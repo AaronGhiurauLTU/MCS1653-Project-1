@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://sm1mqucphgo"]
+[gd_scene load_steps=14 format=3 uid="uid://sm1mqucphgo"]
 
 [ext_resource type="PackedScene" uid="uid://iiommkqt756i" path="res://Scenes/damage-area.tscn" id="1_3ukjm"]
 [ext_resource type="Script" path="res://_Scripts/Enemy.cs" id="1_pb8ns"]
@@ -38,6 +38,43 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8um1n"]
 
+[sub_resource type="Animation" id="Animation_fbtyf"]
+resource_name = "damaged"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_md4dg"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v7iwv"]
+_data = {
+"RESET": SubResource("Animation_md4dg"),
+"damaged": SubResource("Animation_fbtyf")
+}
+
 [node name="Zombie" type="CharacterBody2D"]
 z_index = 1
 collision_layer = 4
@@ -70,3 +107,8 @@ target_position = Vector2(18, 0)
 [node name="RayCastLeft" type="RayCast2D" parent="."]
 position = Vector2(0, 11)
 target_position = Vector2(-18, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_v7iwv")
+}

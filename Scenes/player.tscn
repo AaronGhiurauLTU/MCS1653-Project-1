@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://bxf36fgxoxjr5"]
+[gd_scene load_steps=55 format=3 uid="uid://bxf36fgxoxjr5"]
 
 [ext_resource type="Script" path="res://_Scripts/Player.cs" id="1_0i2k3"]
 [ext_resource type="PackedScene" uid="uid://iiommkqt756i" path="res://Scenes/damage-area.tscn" id="2_souia"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://cj6qs87waiaka" path="res://Scenes/player-HUD.tscn" id="4_fxq33"]
 [ext_resource type="Texture2D" uid="uid://dd1w2sdf8li34" path="res://Tiles/Character_Death.png" id="6_lbkdt"]
 [ext_resource type="Texture2D" uid="uid://btvauxyaf6t3x" path="res://Tiles/Character_Move_custom.png" id="7_3yqks"]
+[ext_resource type="Animation" uid="uid://3tmmjiky07fi" path="res://Animations/damaged.res" id="10_c1tqx"]
+[ext_resource type="Animation" uid="uid://k4ph4m873ygu" path="res://Animations/RESET.res" id="11_0sys0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lv1ti"]
 size = Vector2(12.9555, 10.2043)
@@ -91,6 +93,12 @@ _data = {
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5rghs"]
 radius = 6.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_v2hy0"]
+particles_animation = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lqixg"]
 atlas = ExtResource("3_v074n")
@@ -328,9 +336,6 @@ animations = [{
 "speed": 7.0
 }]
 
-[sub_resource type="Animation" id="Animation_rvfrg"]
-length = 0.001
-
 [sub_resource type="Animation" id="Animation_xcj43"]
 resource_name = "death"
 length = 2.0
@@ -341,7 +346,7 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(2),
+"times": PackedFloat32Array(1.63333),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -351,7 +356,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ckwyj"]
 _data = {
-"RESET": SubResource("Animation_rvfrg"),
+"RESET": ExtResource("11_0sys0"),
+"damaged": ExtResource("10_c1tqx"),
 "death": SubResource("Animation_xcj43")
 }
 
@@ -393,6 +399,7 @@ speed_scale = 0.5
 shape = SubResource("CapsuleShape2D_5rghs")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_v2hy0")
 sprite_frames = SubResource("SpriteFrames_0phxu")
 animation = &"attack"
 autoplay = "idle"

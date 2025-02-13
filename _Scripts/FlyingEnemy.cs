@@ -35,7 +35,7 @@ public partial class FlyingEnemy : CharacterBody2D
 	private int wanderDirection = 1;
 
 	private AnimatedSprite2D animatedSprite;
-
+	private AnimationPlayer animationPlayer;
 	public override void _Ready()
 	{
 		player = GetNode<Node2D>("%Player");
@@ -48,6 +48,17 @@ public partial class FlyingEnemy : CharacterBody2D
 
 		// connect health's custom HealthDepleted signal to OnHealthDepleted
 		health.HealthDepleted += OnHealthDepleted;
+		health.HealthChanged += OnHealthChanged;
+
+		animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
+	}
+
+	private void OnHealthChanged(int newHealth)
+	{
+		if (newHealth > 0)
+		{
+			animationPlayer.Play("damaged");
+		}
 	}
 
 	private void OnHealthDepleted()
