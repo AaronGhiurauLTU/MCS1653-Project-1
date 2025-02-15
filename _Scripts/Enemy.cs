@@ -37,14 +37,13 @@ public partial class Enemy : CharacterBody2D
 
 	private void OnHealthDepleted()
 	{
-		// destroy the enemy node, uses call deferred to delete after the physics frame to avoid issues
-		CallDeferred(Node.MethodName.QueueFree);
+		animationPlayer.Play("death");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
 	{
-		if (Engine.TimeScale == 0)
+		if (Engine.TimeScale == 0 || health.CurrentHealth <= 0)
 			return;
 		
 		// flip is inverted to account for the sprite being faced in the opposite direction

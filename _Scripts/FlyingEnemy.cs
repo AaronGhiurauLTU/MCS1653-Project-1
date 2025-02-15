@@ -63,8 +63,7 @@ public partial class FlyingEnemy : CharacterBody2D
 
 	private void OnHealthDepleted()
 	{
-		// destroy the enemy node, uses call deferred to delete after the physics frame to avoid issues
-		CallDeferred(Node.MethodName.QueueFree);
+		animationPlayer.Play("death");
 	}
 
 	// target the player and enter the dash state
@@ -106,7 +105,7 @@ public partial class FlyingEnemy : CharacterBody2D
 			Velocity = dashDirection.Normalized() * dashMoveSpeed;
 
 			// stop dashing once the floor is hit
-			if (IsOnFloor())
+			if (IsOnFloor() || IsOnWall())
 			{
 				isDashing = false;
 				isFlyingUp = true;

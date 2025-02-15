@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://bxsxu8lpwyt0y"]
+[gd_scene load_steps=18 format=3 uid="uid://bxsxu8lpwyt0y"]
 
 [ext_resource type="Script" path="res://_Scripts/FlyingEnemy.cs" id="1_w8c7q"]
 [ext_resource type="PackedScene" uid="uid://iiommkqt756i" path="res://Scenes/damage-area.tscn" id="2_3gpy7"]
 [ext_resource type="Texture2D" uid="uid://dh77d7abwujr3" path="res://Tiles/bat-fullsheet.png" id="3_jdhhw"]
 [ext_resource type="PackedScene" uid="uid://b5m6kit0lgtco" path="res://Scenes/health.tscn" id="4_bko0s"]
+[ext_resource type="PackedScene" uid="uid://bn7bhegsgl61q" path="res://Scenes/blood_particles.tscn" id="5_x2wcl"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ox1fn"]
 radius = 16.0312
@@ -55,6 +56,33 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_3yx1o"]
 radius = 207.17
 
+[sub_resource type="Animation" id="Animation_h8qbk"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BloodParticles:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_5w213"]
 resource_name = "damaged"
 length = 0.5
@@ -71,8 +99,8 @@ tracks/0/keys = {
 "values": [false, true, false, true]
 }
 
-[sub_resource type="Animation" id="Animation_h8qbk"]
-resource_name = "RESET"
+[sub_resource type="Animation" id="Animation_3hllb"]
+resource_name = "death"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -83,13 +111,54 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BloodParticles:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
 "values": [true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DamageArea")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kg1p6"]
 _data = {
 "RESET": SubResource("Animation_h8qbk"),
-"damaged": SubResource("Animation_5w213")
+"damaged": SubResource("Animation_5w213"),
+"death": SubResource("Animation_3hllb")
 }
 
 [node name="FlyingEnemy" type="CharacterBody2D"]
@@ -126,6 +195,8 @@ maxHealth = 2
 libraries = {
 "": SubResource("AnimationLibrary_kg1p6")
 }
+
+[node name="BloodParticles" parent="." instance=ExtResource("5_x2wcl")]
 
 [connection signal="body_entered" from="DetectionArea" to="." method="OnBodyEnteredDetectionArea"]
 [connection signal="body_exited" from="DetectionArea" to="." method="OnBodyExitedDetectionArea"]
