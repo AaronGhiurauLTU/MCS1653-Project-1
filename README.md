@@ -56,7 +56,7 @@ Background Music:
 <br>
 
 5. **Did you get help from any AI Code Assistants?** <br> (Tell us which .cs file to look in for the citation and describe what you learned)
-
+Yes, for AdvancedFlyingEnemy ChatGPT was used to calculate the interception velocity
 
 
 <br>

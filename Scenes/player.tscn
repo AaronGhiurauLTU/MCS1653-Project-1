@@ -114,6 +114,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DamageArea/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_cw8pb"]
 resource_name = "attack"
@@ -451,6 +463,7 @@ collision_mask = 4
 position = Vector2(9.2, 2.5)
 scale = Vector2(3.27273, 3.42994)
 shape = SubResource("RectangleShape2D_lv1ti")
+disabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SlashAttack"]
 sprite_frames = SubResource("SpriteFrames_ynk0b")
