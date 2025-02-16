@@ -35,6 +35,17 @@ Heart Sprite by NicoleMarieProductions: https://opengameart.org/content/heart-16
 Zombie Sprite by CharlesGabriel: https://opengameart.org/content/16x18-zombie-characters-templates-extra-template
 Bat Sprites: https://opengameart.org/content/bat-rework
 
+Sword Slash: https://freesound.org/s/580307/
+
+Background Music: 
+	Title: Plans in Motion
+	Music: Kevin MacLeod
+	License: CC BY 3.0 (http://goo.gl/BlcHZR)
+	Download: http://incompetech.com/music/royalty-...
+
+	ISRC: USUAN1100429
+	© 2008 Kevin MacLeod
+
 
 <br>
 

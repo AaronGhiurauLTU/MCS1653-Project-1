@@ -186,6 +186,8 @@ public partial class Player : CharacterBody2D
 			AnimationPlayer attackAnimationPlayer = slashAttack.GetNode<AnimationPlayer>("AnimationPlayer");
 			AnimatedSprite2D attackAnimationSprite = slashAttack.GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 			DamageArea attackDamageArea = slashAttack.GetNode<DamageArea>("DamageArea");
+			AudioStreamPlayer2D attackSound = slashAttack.GetNode<AudioStreamPlayer2D>("AudioStreamPlayer2D");
+
 			attackAnimationPlayer.Play("player_attack");
 
 			if (!isSliding)
@@ -194,6 +196,8 @@ public partial class Player : CharacterBody2D
 				attackAnimationSprite.Play("default");
 				attackDamageArea.damage = 1;
 				attackAnimationPlayer.SpeedScale = 0.5f;
+				attackSound.PitchScale = 1;
+				attackSound.VolumeDb = 0;
 			}
 			else // do a stronger attack while sliding
 			{
@@ -201,6 +205,8 @@ public partial class Player : CharacterBody2D
 				attackAnimationSprite.Play("inverted");
 				attackDamageArea.damage = 2;
 				attackAnimationPlayer.SpeedScale = 1f;
+				attackSound.PitchScale = 2;
+				attackSound.VolumeDb = 1;
 			}
 			slashAttack.RotationDegrees = angleDeg;
 

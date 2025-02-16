@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://sc1a788g77fl"]
+
+[ext_resource type="AudioStream" uid="uid://0r33tvjiroud" path="res://Sounds/Music/Plans in Motion.mp3" id="1_npxc8"]
+
+[node name="Music" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_npxc8")
+autoplay = true
+bus = &"Music"
