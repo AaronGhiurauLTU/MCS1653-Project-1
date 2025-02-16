@@ -6,7 +6,9 @@ public partial class Player : CharacterBody2D
 	[Export] public float Speed = 300.0f;
 	[Export] public float JumpVelocity = -400.0f;
 	[Export] public float attackOffset = 1f;
-	[Export] public float maxSlideDistance = 100f;
+	[Export] public float maxSlideDistance = 100f,
+		normalAttackScale = 1.25f,
+		slideAttackScale = 1.5f;
 	private bool canAttack = true;
 	private int directionXFacing = 1;
 	private Health health;
@@ -110,7 +112,7 @@ public partial class Player : CharacterBody2D
 		{
 			velocity.Y = JumpVelocity;
 		} 
-		else if (Input.IsActionJustPressed("slide") && IsOnFloor() && !isSliding && horizontalInputs != 0)
+		else if (Input.IsActionJustPressed("slide") && !isAttacking && IsOnFloor() && !isSliding && horizontalInputs != 0)
 		{
 			isSliding = true;
 			RotationDegrees = -90 * directionXFacing;
@@ -179,12 +181,30 @@ public partial class Player : CharacterBody2D
 			// angle that the attack is rotated by, so that the attack goes in the direction the player is facing
 			float angleDeg = (float)Mathf.RadToDeg(attackDirection.Angle());
 
+
+
+			AnimationPlayer attackAnimationPlayer = slashAttack.GetNode<AnimationPlayer>("AnimationPlayer");
+			AnimatedSprite2D attackAnimationSprite = slashAttack.GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+			DamageArea attackDamageArea = slashAttack.GetNode<DamageArea>("DamageArea");
+			attackAnimationPlayer.Play("player_attack");
+
+			if (!isSliding)
+			{
+				slashAttack.Scale = new(normalAttackScale, normalAttackScale);
+				attackAnimationSprite.Play("default");
+				attackDamageArea.damage = 1;
+				attackAnimationPlayer.SpeedScale = 0.5f;
+			}
+			else // do a stronger attack while sliding
+			{
+				slashAttack.Scale = new(slideAttackScale, slideAttackScale);
+				attackAnimationSprite.Play("inverted");
+				attackDamageArea.damage = 2;
+				attackAnimationPlayer.SpeedScale = 1f;
+			}
 			slashAttack.RotationDegrees = angleDeg;
 
 			slashAttack.Position = attackDirection * attackOffset;
-
-			AnimationPlayer attackAnimationPlayer = slashAttack.GetNode<AnimationPlayer>("AnimationPlayer");
-			attackAnimationPlayer.Play("player_attack");
 		}
 
 		Velocity = velocity;

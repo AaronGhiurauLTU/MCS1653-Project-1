@@ -6,7 +6,7 @@ using System.Collections.ObjectModel;
 public partial class DamageArea : Area2D
 {
 	// the damage this area does
-	[Export] private int damage = 1;
+	[Export] public int damage = 1;
 
 	// reference to the timer that counts down the time left for invincibility
 	private Timer invincibilityTimer;

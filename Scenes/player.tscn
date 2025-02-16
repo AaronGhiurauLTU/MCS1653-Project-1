@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://bxf36fgxoxjr5"]
+[gd_scene load_steps=61 format=3 uid="uid://bxf36fgxoxjr5"]
 
 [ext_resource type="Script" path="res://_Scripts/Player.cs" id="1_0i2k3"]
 [ext_resource type="PackedScene" uid="uid://iiommkqt756i" path="res://Scenes/damage-area.tscn" id="2_souia"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ddxuqh3aggmeh" path="res://Tiles/Character_Attack_fx.png" id="3_1goxb"]
 [ext_resource type="Texture2D" uid="uid://0v5kwgrui3wd" path="res://Tiles/Character_Idle_customized.png" id="3_g15op"]
 [ext_resource type="Texture2D" uid="uid://dhvrfpd3i3o3f" path="res://Sprites/Character_Attack_custom.png" id="3_v074n"]
+[ext_resource type="Texture2D" uid="uid://b0bsxeg4aki11" path="res://Tiles/Character_Attack_fx_inverted.png" id="4_32db6"]
 [ext_resource type="PackedScene" uid="uid://cj6qs87waiaka" path="res://Scenes/player-HUD.tscn" id="4_fxq33"]
 [ext_resource type="Texture2D" uid="uid://dd1w2sdf8li34" path="res://Tiles/Character_Death.png" id="6_lbkdt"]
 [ext_resource type="Texture2D" uid="uid://btvauxyaf6t3x" path="res://Tiles/Character_Move_custom.png" id="7_3yqks"]
@@ -35,6 +36,26 @@ region = Rect2(512, 128, 128, 128)
 atlas = ExtResource("3_1goxb")
 region = Rect2(640, 128, 128, 128)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_f3amn"]
+atlas = ExtResource("4_32db6")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rwnnm"]
+atlas = ExtResource("4_32db6")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5uri"]
+atlas = ExtResource("4_32db6")
+region = Rect2(384, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oo6se"]
+atlas = ExtResource("4_32db6")
+region = Rect2(512, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4qkmk"]
+atlas = ExtResource("4_32db6")
+region = Rect2(640, 128, 128, 128)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_ynk0b"]
 animations = [{
 "frames": [{
@@ -53,9 +74,29 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8iktc")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f3amn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rwnnm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5uri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oo6se")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4qkmk")
+}],
+"loop": false,
+"name": &"inverted",
+"speed": 14.0
 }]
 
 [sub_resource type="Animation" id="Animation_cw8pb"]
@@ -368,8 +409,10 @@ script = ExtResource("1_0i2k3")
 Speed = 150.0
 JumpVelocity = -300.0
 attackOffset = 20.0
+slideAttackScale = 2.0
 
 [node name="SlashAttack" type="Node2D" parent="."]
+z_index = 5
 scale = Vector2(1.25, 1.25)
 
 [node name="DamageArea" parent="SlashAttack" instance=ExtResource("2_souia")]
@@ -383,9 +426,7 @@ disabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SlashAttack"]
 sprite_frames = SubResource("SpriteFrames_ynk0b")
-autoplay = "default"
-frame = 1
-frame_progress = 0.355382
+animation = &"inverted"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SlashAttack"]
 libraries = {
