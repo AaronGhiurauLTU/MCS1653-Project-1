@@ -17,27 +17,39 @@
 <br>
 
 1. **What are the controls to your game? How do we play?**
+
 Arrow keys to move and aim attack. z to jump, x to attack, and left shift to slide while moving on the floor.
 
 <br>
 
 2. **What creative additions did you make? How can we find them?**
-The player's attack's direction can be controlled based on their movement input. There is sliding which can be used to dodge enemies, move fast, and go through small gaps. If the player attacks during a slide, a special strong attack occurs. The red bat enemies use the player's velocity to predict where they are moving and will try to intercept them.
+
+The player's attack's direction can be controlled based on their movement input. \
+There is sliding which can be used to dodge enemies, move fast, and go through small gaps. \
+If the player attacks during a slide, a special strong attack occurs. \
+The red bat enemies use the player's velocity to predict where they are moving and will try to intercept them.
 
 
 <br>
 
 3. **Any assets used that you didn't create yourself?** <br> (art, music, etc. Just tell us where you got it, link it here)
-Character sprite and animations: https://admurin.itch.io/free-monster-pack-character
+
+Character sprite and animations: https://admurin.itch.io/free-monster-pack-character\
+
 Tileset and backgrounds: https://opengameart.org/content/generic-platformer-tileset-16x16-background
+
 Heart Sprite by NicoleMarieProductions: https://opengameart.org/content/heart-1616
+
 Zombie Sprite by CharlesGabriel: https://opengameart.org/content/16x18-zombie-characters-templates-extra-template
+
 Bat Sprites: https://opengameart.org/content/bat-rework
 
 Sword Slash Sound Effect: https://freesound.org/s/580307/
+
 Hit Sound Effect: https://freesound.org/s/610280/
 
-Background Music: 
+Background Music:
+
 	Title: Plans in Motion
 	Music: Kevin MacLeod
 	License: CC BY 3.0 (http://goo.gl/BlcHZR)
@@ -50,33 +62,40 @@ Background Music:
 <br>
 
 4. **Did you receive help from anyone outside this class?** <br> (list their names and what they helped with)
+
 No.
 
 
 <br>
 
 5. **Did you get help from any AI Code Assistants?** <br> (Tell us which .cs file to look in for the citation and describe what you learned)
-Yes, for AdvancedFlyingEnemy ChatGPT was used to calculate the interception velocity
+
+Yes, for AdvancedFlyingEnemy ChatGPT was used to calculate the interception velocity based on the players velocity.
 
 
 <br>
 
 6. **Did you get help from any online websites, videos, or tutorials?** <br> (link them here)
+
 Brackey's Godot 2D Tutorial: https://youtu.be/LOhfqjmasi0?si=W5CWW-TJ50JmI36B
+
 Menu Tutorial: https://youtu.be/vsKxB66_ngw?si=3cbEceOTDbdFnJhn
+
 Scrolling background/parallax tutorial: https://www.youtube.com/watch?v=quVFPh1eotE
 
 
 <br>
 
 7. **What trouble did you have with this project?**
+
 Learning various aspects of Godot as I only had a week of experience prior to starting this project. The tutorials and docs helped a lot with this problem. Another issue I had was calculating the velocity needed for the red bat enemy to target the player based on their speed as I couldn't figure it out on my own which is why I used ChatGPT to help.
 
 
 <br>
 
 8. **Is there anything else we should know?**
-This project was made with Godot 4.3 which did not support WebGL builds with C# and downgrading created too many errors to resolve.
+
+This project was made with Godot 4.3 which did not support WebGL builds with C# and downgrading to Godot 3 created too many errors to resolve.
 
 
 
