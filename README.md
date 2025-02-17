@@ -12,18 +12,17 @@
 # Required ReadMe Info for ALL MCS1653 Projects
 * **Project**   - Project 1 Sidescroller
 * **Your Name** - Aaron Ghiurau
-* **Date**      - 
+* **Date**      - 02/17/2025
 
 <br>
 
 1. **What are the controls to your game? How do we play?**
-Arrow keys to move and aim attack. z to jump, x to attack
-
+Arrow keys to move and aim attack. z to jump, x to attack, and left shift to slide while moving on the floor.
 
 <br>
 
 2. **What creative additions did you make? How can we find them?**
-
+The player's attack's direction can be controlled based on their movement input. There is sliding which can be used to dodge enemies, move fast, and go through small gaps. If the player attacks during a slide, a special strong attack occurs. The red bat enemies use the player's velocity to predict where they are moving and will try to intercept them.
 
 
 <br>
@@ -35,7 +34,8 @@ Heart Sprite by NicoleMarieProductions: https://opengameart.org/content/heart-16
 Zombie Sprite by CharlesGabriel: https://opengameart.org/content/16x18-zombie-characters-templates-extra-template
 Bat Sprites: https://opengameart.org/content/bat-rework
 
-Sword Slash: https://freesound.org/s/580307/
+Sword Slash Sound Effect: https://freesound.org/s/580307/
+Hit Sound Effect: https://freesound.org/s/610280/
 
 Background Music: 
 	Title: Plans in Motion
@@ -50,7 +50,7 @@ Background Music:
 <br>
 
 4. **Did you receive help from anyone outside this class?** <br> (list their names and what they helped with)
-
+No.
 
 
 <br>
@@ -70,13 +70,13 @@ Scrolling background/parallax tutorial: https://www.youtube.com/watch?v=quVFPh1e
 <br>
 
 7. **What trouble did you have with this project?**
-
+Learning various aspects of Godot as I only had a week of experience prior to starting this project. The tutorials and docs helped a lot with this problem. Another issue I had was calculating the velocity needed for the red bat enemy to target the player based on their speed as I couldn't figure it out on my own which is why I used ChatGPT to help.
 
 
 <br>
 
 8. **Is there anything else we should know?**
-
+This project was made with Godot 4.3 which did not support WebGL builds with C# and downgrading created too many errors to resolve.
 
 
 
