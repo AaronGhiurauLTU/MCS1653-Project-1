@@ -492,12 +492,11 @@ animation = &"attack"
 autoplay = "idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(73, 19)
-zoom = Vector2(2, 2)
+zoom = Vector2(2.2, 2.2)
 limit_bottom = 500
 limit_smoothed = true
 position_smoothing_enabled = true
-position_smoothing_speed = 7.0
+position_smoothing_speed = 15.0
 drag_horizontal_enabled = true
 drag_left_margin = 0.05
 drag_top_margin = 0.0
