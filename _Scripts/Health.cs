@@ -5,7 +5,7 @@ public partial class Health : Node
 {
 	[Export] private int maxHealth = 5;
 	private int currentHealth;
-
+	private AudioStreamPlayer2D hitSound;
 	// get the current health without allowing the setting of it publicly
 	public int CurrentHealth { get { return currentHealth; } }
 
@@ -21,7 +21,7 @@ public partial class Health : Node
 		currentHealth = Math.Max(0, currentHealth);
 
 		EmitSignal(SignalName.HealthChanged, currentHealth);
-
+		hitSound.Play();
 		// detect death
 		if (currentHealth == 0)
 		{
@@ -32,6 +32,7 @@ public partial class Health : Node
 	public override void _Ready()
 	{
 		currentHealth = maxHealth;
+		hitSound = GetNode<AudioStreamPlayer2D>("HitSound");
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
