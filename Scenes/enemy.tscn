@@ -160,12 +160,14 @@ scale = Vector2(1.7, 1.7)
 sprite_frames = SubResource("SpriteFrames_a4870")
 autoplay = "default"
 frame_progress = 0.978495
+offset = Vector2(0, 1)
 flip_h = true
 
 [node name="Health" parent="." instance=ExtResource("4_a0dij")]
 maxHealth = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
 scale = Vector2(1.5, 1.5)
 shape = SubResource("RectangleShape2D_8um1n")
 

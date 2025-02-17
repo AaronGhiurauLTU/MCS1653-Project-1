@@ -1,18 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://craq4exq8gdbc"]
+[gd_scene load_steps=4 format=3 uid="uid://bnvjfdrec1w1s"]
 
-[ext_resource type="Script" path="res://_Scripts/MainMenu.cs" id="1_md8y6"]
+[ext_resource type="Script" path="res://_Scripts/MainMenu.cs" id="1_kjbha"]
+[ext_resource type="Texture2D" uid="uid://b83rir7si2nym" path="res://Sprites/Screenshot from 2025-02-16 21-33-42.png" id="2_57k27"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_prn5a"]
+[sub_resource type="LabelSettings" id="LabelSettings_8vc87"]
 font_size = 37
+font_color = Color(0.546409, 3.85046e-07, 2.40654e-07, 1)
 
-[node name="PauseMenu" type="Control"]
+[node name="EndScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_md8y6")
+script = ExtResource("1_kjbha")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -31,14 +33,20 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
+[node name="ScreenshotFrom2025-02-1621-33-42" type="Sprite2D" parent="MarginContainer/VBoxContainer"]
+position = Vector2(51, 18)
+scale = Vector2(2, 2)
+texture = ExtResource("2_57k27")
+
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Paused"
-label_settings = SubResource("LabelSettings_prn5a")
+text = "You died!"
+label_settings = SubResource("LabelSettings_8vc87")
 
 [node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Restart Level"
+text = "Restart Level
+"
 
 [node name="MainMenu" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2

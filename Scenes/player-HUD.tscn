@@ -16,4 +16,4 @@ position = Vector2(1, -2)
 texture = ExtResource("3_eeovo")
 centered = false
 region_enabled = true
-region_rect = Rect2(0, 0, 240, 48)
+region_rect = Rect2(0, 0, 480, 48)

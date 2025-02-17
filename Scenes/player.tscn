@@ -432,7 +432,7 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"ReloadScene"
+"method": &"LoadDeathScreen"
 }]
 }
 
@@ -480,6 +480,7 @@ stream = ExtResource("5_jbr5m")
 bus = &"SFX"
 
 [node name="Health" parent="." instance=ExtResource("2_vtmpm")]
+maxHealth = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_5rghs")

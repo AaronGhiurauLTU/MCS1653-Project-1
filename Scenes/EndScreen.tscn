@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dpmi8p7h1drrv"]
+[gd_scene load_steps=4 format=3 uid="uid://dpmi8p7h1drrv"]
 
 [ext_resource type="Script" path="res://_Scripts/MainMenu.cs" id="1_k4idp"]
+[ext_resource type="Texture2D" uid="uid://wqvar5cagvvd" path="res://Sprites/bg.png" id="2_fl1vv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_prn5a"]
 font_size = 37
@@ -31,6 +32,11 @@ grow_vertical = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
+[node name="Bg" type="Sprite2D" parent="MarginContainer/VBoxContainer"]
+position = Vector2(98, 98)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_fl1vv")
+
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "You won!"
@@ -41,4 +47,16 @@ layout_mode = 2
 text = "Main Menu
 "
 
+[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Restart Level
+"
+
+[node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit
+"
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/MainMenu" to="." method="OnMainMenuPressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="OnPlayPressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Quit" to="." method="OnQuitPressed"]

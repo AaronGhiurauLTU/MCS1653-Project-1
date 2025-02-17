@@ -70,6 +70,7 @@ public partial class AdvancedFlyingEnemy : CharacterBody2D
 	// this function was obtained from ChatGPT
  	public static Vector2 CalculateInterceptionVelocity(Vector2 playerPos, Vector2 playerVel, Vector2 enemyPos, float enemySpeed)
     {
+		playerVel.Y *= 0.25f; // suppress vertical velocity component for jumping significantly
         Vector2 relativePos = playerPos - enemyPos;
         Vector2 relativeVel = playerVel;
 
@@ -124,6 +125,9 @@ public partial class AdvancedFlyingEnemy : CharacterBody2D
 
 	public override void _PhysicsProcess(double delta)
 	{
+		if (Engine.TimeScale == 0 || health.CurrentHealth <= 0)
+			return;
+			
 		// if the player never exited the detection radius, attack them again after making it to the wander state
 		if (isWandering && playerDetected)
 		{
@@ -134,9 +138,9 @@ public partial class AdvancedFlyingEnemy : CharacterBody2D
 		{
 			animatedSprite.Play("Dash");
 			Velocity = dashDirection.Normalized() * dashMoveSpeed;
-
-			// stop dashing once the floor is hit
-			if (IsOnFloor() || IsOnWall())
+			
+			// stop dashing once it collides or flies too far
+			if (IsOnFloor() || IsOnWall() || (originalPosition - Position).Length() > 500)
 			{
 				isDashing = false;
 				isFlyingUp = true;

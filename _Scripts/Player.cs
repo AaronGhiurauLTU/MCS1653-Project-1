@@ -63,10 +63,10 @@ public partial class Player : CharacterBody2D
 		animationPlayer.Play("death");
 	}
 	
-	public void ReloadScene()
+	public void LoadDeathScreen()
 	{
-		// reload the level, call deferred used to reload scene after physics frame to avoid errors
-		GetTree().CallDeferred(SceneTree.MethodName.ReloadCurrentScene);
+		// load death screen
+		GetTree().ChangeSceneToFile("res://Scenes/DeathScreen.tscn");
 	}
 
 	private void OnAttackCooldownTimeout()
@@ -156,8 +156,7 @@ public partial class Player : CharacterBody2D
 			}
 			else
 			{
-				//animatedSprite.FlipH = true;
-				velocity.X = directionXFacing * Speed * 2;
+				velocity.X = directionXFacing * Speed * 1.75f;
 			}
 		}
 
@@ -173,15 +172,13 @@ public partial class Player : CharacterBody2D
 
 			Vector2 attackDirection = direction;
 
-			if (attackDirection.Length() == 0)
+			if (attackDirection.Length() == 0 || isSliding)
 			{
 				attackDirection = directionXFacing * Vector2.Right;
 			}
 
 			// angle that the attack is rotated by, so that the attack goes in the direction the player is facing
 			float angleDeg = (float)Mathf.RadToDeg(attackDirection.Angle());
-
-
 
 			AnimationPlayer attackAnimationPlayer = slashAttack.GetNode<AnimationPlayer>("AnimationPlayer");
 			AnimatedSprite2D attackAnimationSprite = slashAttack.GetNode<AnimatedSprite2D>("AnimatedSprite2D");

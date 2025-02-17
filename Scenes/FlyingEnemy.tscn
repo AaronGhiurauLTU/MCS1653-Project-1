@@ -162,6 +162,7 @@ _data = {
 }
 
 [node name="FlyingEnemy" type="CharacterBody2D"]
+position = Vector2(0, 1)
 collision_layer = 4
 script = ExtResource("1_w8c7q")
 dashMoveSpeed = 250.0
